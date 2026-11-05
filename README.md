@@ -1,2 +1,2 @@
-# WinUICalcReact
-WinUICalcReact is the open source backend engine that powers WinUI Calc. 
+# WinUICalc React
+WinUICalc React is the open source backend engine that powers WinUI Calc. 
