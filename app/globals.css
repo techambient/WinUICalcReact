@@ -1,0 +1,381 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Segoe UI Variable Text', 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, var(--font-fallback-sans), 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Segoe UI Variable Display', 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, var(--font-fallback-sans), 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Cascadia Mono', Consolas, 'SF Mono', ui-monospace, monospace;
+
+  --color-background: var(--win-mica);
+  --color-foreground: var(--win-text);
+  --color-card: var(--win-card);
+  --color-card-foreground: var(--win-text);
+  --color-popover: var(--win-flyout);
+  --color-popover-foreground: var(--win-text);
+  --color-primary: var(--win-accent);
+  --color-primary-foreground: var(--win-on-accent);
+  --color-secondary: var(--win-fill-op);
+  --color-secondary-foreground: var(--win-text);
+  --color-muted: var(--win-subtle-hover);
+  --color-muted-foreground: var(--win-text-2);
+  --color-accent: var(--win-subtle-hover);
+  --color-accent-foreground: var(--win-text);
+  --color-destructive: var(--win-critical);
+  --color-border: var(--win-stroke);
+  --color-input: var(--win-stroke);
+  --color-ring: var(--win-text);
+
+  --color-mica: var(--win-mica);
+  --color-layer: var(--win-layer);
+  --color-pane: var(--win-pane);
+  --color-flyout: var(--win-flyout);
+  --color-num: var(--win-fill-num);
+  --color-num-hover: var(--win-fill-num-hover);
+  --color-num-pressed: var(--win-fill-num-pressed);
+  --color-op: var(--win-fill-op);
+  --color-op-hover: var(--win-fill-op-hover);
+  --color-op-pressed: var(--win-fill-op-pressed);
+  --color-accent-win: var(--win-accent);
+  --color-accent-win-hover: var(--win-accent-hover);
+  --color-accent-win-pressed: var(--win-accent-pressed);
+  --color-accent-text: var(--win-accent-text);
+  --color-on-accent: var(--win-on-accent);
+  --color-text-1: var(--win-text);
+  --color-text-2: var(--win-text-2);
+  --color-text-3: var(--win-text-3);
+  --color-stroke: var(--win-stroke);
+  --color-stroke-strong: var(--win-stroke-strong);
+  --color-divider: var(--win-divider);
+  --color-subtle-hover: var(--win-subtle-hover);
+  --color-subtle-pressed: var(--win-subtle-pressed);
+  --color-critical: var(--win-critical);
+
+  /* WinUI 3 motion curves (FluentTheme ControlFastOutSlowIn / Decelerate / Point-to-point) */
+  --ease-win-decelerate: cubic-bezier(0, 0, 0, 1);
+  --ease-win-entrance: cubic-bezier(0.1, 0.9, 0.2, 1);
+  --ease-win-standard: cubic-bezier(0.8, 0, 0.2, 1);
+  --ease-win-accelerate: cubic-bezier(1, 0, 1, 1);
+  --ease-win-exit: cubic-bezier(0.7, 0, 1, 0.5);
+
+  --radius-control: 4px;
+  --radius-overlay: 8px;
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+}
+
+:root {
+  color-scheme: light;
+  --win-mica: #f3f3f3;
+  --win-layer: rgba(255, 255, 255, 0.5);
+  --win-pane: #eeeeee;
+  --win-card: rgba(255, 255, 255, 0.7);
+  --win-flyout: #f9f9f9;
+  --win-fill-num: rgba(255, 255, 255, 0.85);
+  --win-fill-num-hover: rgba(249, 249, 249, 0.6);
+  --win-fill-num-pressed: rgba(249, 249, 249, 0.35);
+  --win-fill-op: rgba(249, 249, 249, 0.55);
+  --win-fill-op-hover: rgba(255, 255, 255, 0.9);
+  --win-fill-op-pressed: rgba(249, 249, 249, 0.3);
+  --win-accent: #005fb8;
+  --win-accent-hover: #196ebf;
+  --win-accent-pressed: #3381c7;
+  --win-accent-text: #003e92;
+  --win-on-accent: #ffffff;
+  --win-text: rgba(0, 0, 0, 0.896);
+  --win-text-2: rgba(0, 0, 0, 0.606);
+  --win-text-3: rgba(0, 0, 0, 0.361);
+  --win-stroke: rgba(0, 0, 0, 0.0578);
+  --win-stroke-strong: rgba(0, 0, 0, 0.1622);
+  --win-divider: rgba(0, 0, 0, 0.0803);
+  --win-subtle-hover: rgba(0, 0, 0, 0.0373);
+  --win-subtle-pressed: rgba(0, 0, 0, 0.0241);
+  --win-critical: #c42b1c;
+  --win-shadow: 0 8px 16px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  --win-shadow-card: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  color-scheme: dark;
+  --win-mica: #202020;
+  --win-layer: rgba(58, 58, 58, 0.3);
+  --win-pane: #1c1c1c;
+  --win-card: rgba(255, 255, 255, 0.0512);
+  --win-flyout: #2c2c2c;
+  --win-fill-num: rgba(255, 255, 255, 0.0837);
+  --win-fill-num-hover: rgba(255, 255, 255, 0.0605);
+  --win-fill-num-pressed: rgba(255, 255, 255, 0.0419);
+  --win-fill-op: rgba(255, 255, 255, 0.0465);
+  --win-fill-op-hover: rgba(255, 255, 255, 0.0837);
+  --win-fill-op-pressed: rgba(255, 255, 255, 0.0326);
+  --win-accent: #60cdff;
+  --win-accent-hover: #5bbae8;
+  --win-accent-pressed: #56a7d1;
+  --win-accent-text: #99ebff;
+  --win-on-accent: #000000;
+  --win-text: #ffffff;
+  --win-text-2: rgba(255, 255, 255, 0.786);
+  --win-text-3: rgba(255, 255, 255, 0.3628);
+  --win-stroke: rgba(255, 255, 255, 0.0698);
+  --win-stroke-strong: rgba(255, 255, 255, 0.0465);
+  --win-divider: rgba(255, 255, 255, 0.0837);
+  --win-subtle-hover: rgba(255, 255, 255, 0.0605);
+  --win-subtle-pressed: rgba(255, 255, 255, 0.0419);
+  --win-critical: #ff99a4;
+  --win-shadow: 0 8px 16px rgba(0, 0, 0, 0.26), 0 0 2px rgba(0, 0, 0, 0.3);
+  --win-shadow-card: 0 2px 4px rgba(0, 0, 0, 0.13);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+  button {
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible {
+    outline: 2px solid var(--win-text);
+    outline-offset: 1px;
+    border-radius: 4px;
+  }
+  /* WinUI controls crossfade their fill/foreground over ControlFasterAnimationDuration (83ms) */
+  button,
+  select,
+  input,
+  a {
+    transition-property: background-color, color, border-color, opacity;
+    transition-duration: 83ms;
+    transition-timing-function: linear;
+  }
+}
+
+@keyframes win-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes win-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes win-page-rise {
+  from {
+    transform: translateY(var(--win-page-offset, 120px));
+  }
+}
+@keyframes win-dialog-scale {
+  from {
+    transform: scale(1.05);
+  }
+}
+/* Popup slides out from behind its anchor: translated up by half its height while the
+   top half is clipped away, so the visible top edge stays pinned under the button. */
+@keyframes win-menu-reveal {
+  from {
+    transform: translateY(-50%);
+    clip-path: inset(50% 0 0 0 round 8px);
+  }
+  to {
+    transform: none;
+    clip-path: inset(0 0 0 0 round 8px);
+  }
+}
+@keyframes win-sheet-reveal {
+  from {
+    transform: translateY(50%);
+    clip-path: inset(0 0 50% 0 round 8px 8px 0 0);
+  }
+  to {
+    transform: none;
+    clip-path: inset(0 0 0 0 round 8px 8px 0 0);
+  }
+}
+@keyframes win-sheet-hide {
+  from {
+    transform: none;
+    clip-path: inset(0 0 0 0 round 8px 8px 0 0);
+  }
+  to {
+    transform: translateY(50%);
+    clip-path: inset(0 0 50% 0 round 8px 8px 0 0);
+  }
+}
+@keyframes win-expander-expand {
+  from {
+    transform: translateY(-100%);
+  }
+}
+@keyframes win-expander-collapse {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes win-pivot-slide {
+  from {
+    transform: translateX(var(--win-dx, 40px));
+  }
+}
+
+@layer components {
+  /* Frame navigation (EntranceNavigationTransitionInfo): new page rises from below on the entrance curve */
+  .win-page-enter {
+    animation:
+      win-fade-in 167ms linear both,
+      win-page-rise 333ms var(--ease-win-entrance) both;
+  }
+  /* Outgoing page fades out before the new one is shown */
+  .win-page-exit {
+    animation: win-fade-out 100ms linear both;
+    pointer-events: none;
+  }
+  /* ContentDialog / overlay window open */
+  .win-dialog-in {
+    animation:
+      win-fade-in 167ms linear both,
+      win-dialog-scale 250ms var(--ease-win-decelerate) both;
+  }
+  /* MenuFlyout open & light-dismiss close */
+  .win-menu-open {
+    animation:
+      win-fade-in 83ms linear both,
+      win-menu-reveal 250ms var(--ease-win-decelerate) both;
+  }
+  .win-menu-close {
+    animation: win-fade-out 83ms linear both;
+    pointer-events: none;
+  }
+  /* Bottom-anchored flyout (History on narrow windows) */
+  .win-sheet-open {
+    animation: win-sheet-reveal 333ms var(--ease-win-decelerate) both;
+  }
+  .win-sheet-close {
+    animation: win-sheet-hide 167ms var(--ease-win-exit) both;
+    pointer-events: none;
+  }
+  /* Expander: content slides out from under the header inside a clip */
+  .win-expander-expand {
+    animation: win-expander-expand 333ms var(--ease-win-decelerate) both;
+  }
+  .win-expander-collapse {
+    animation: win-expander-collapse 167ms var(--ease-win-exit) both;
+  }
+  /* Pivot content slides in from the side of the newly selected header */
+  .win-pivot-from-right,
+  .win-pivot-from-left {
+    animation:
+      win-fade-in 167ms linear both,
+      win-pivot-slide 333ms var(--ease-win-decelerate) both;
+  }
+  .win-pivot-from-right {
+    --win-dx: 40px;
+  }
+  .win-pivot-from-left {
+    --win-dx: -40px;
+  }
+
+  /* WinUI RadioButton: the glyph is the unfilled center of an accent ring.
+     Rest 12px, pointer-over 14px, pressed 10px; it grows out of the center when checked. */
+  .win-radio {
+    appearance: none;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    border-radius: 9999px;
+    border: 1px solid var(--win-text-2);
+    background-color: var(--win-fill-op);
+    box-shadow: inset 0 0 0 9px transparent;
+    transition:
+      box-shadow 167ms var(--ease-win-decelerate),
+      background-color 83ms linear,
+      border-color 83ms linear;
+  }
+  .win-radio:hover {
+    background-color: var(--win-subtle-hover);
+  }
+  .win-radio:not(:checked):active {
+    background-color: var(--win-on-accent);
+    border-color: var(--win-text-3);
+    box-shadow: inset 0 0 0 4px var(--win-text-3);
+  }
+  .win-radio:checked {
+    border-color: var(--win-accent);
+    background-color: var(--win-on-accent);
+    box-shadow: inset 0 0 0 3px var(--win-accent);
+  }
+  .win-radio:checked:hover {
+    border-color: var(--win-accent-hover);
+    box-shadow: inset 0 0 0 2px var(--win-accent-hover);
+  }
+  .win-radio:checked:active {
+    border-color: var(--win-accent-pressed);
+    box-shadow: inset 0 0 0 4px var(--win-accent-pressed);
+  }
+  .win-radio:disabled {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+@layer components {
+  /* WinUI elevation: thin low-opacity stroke with a slightly darker bottom edge */
+  .win-elevation {
+    border: 1px solid var(--win-stroke);
+    box-shadow: inset 0 -1px 0 var(--win-stroke-strong);
+  }
+  .win-elevation-accent {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  }
+  .win-flyout {
+    background: var(--win-flyout);
+    border: 1px solid var(--win-stroke);
+    border-radius: 8px;
+    box-shadow: var(--win-shadow);
+  }
+  .win-card {
+    background: var(--win-card);
+    border: 1px solid var(--win-stroke);
+    border-radius: 8px;
+    box-shadow: var(--win-shadow-card);
+  }
+  .win-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--win-text-3) transparent;
+  }
+  .win-input {
+    background: var(--win-fill-num);
+    border: 1px solid var(--win-stroke);
+    border-bottom: 1px solid var(--win-text-2);
+    border-radius: 4px;
+  }
+  .win-input:focus-within,
+  .win-input:focus {
+    outline: none;
+    background: var(--win-flyout);
+    border-bottom: 2px solid var(--win-accent);
+  }
+}
